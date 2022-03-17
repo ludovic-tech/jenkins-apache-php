@@ -2,7 +2,7 @@ node{
     stage('Clone git') {
         checkout scm
     }
-    stage('Lancement du Ansible') {
+    stage('Ansible') {
       ansiblePlaybook (
           colorized: true,          
           playbook: 'playbook.yaml',
