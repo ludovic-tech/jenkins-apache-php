@@ -1,0 +1,23 @@
+---
+
+- hosts: 10.0.0.210
+
+  tasks:
+  - name: Installation du serveur Apache et PHP
+    yum:
+     name: "{{ item }}"
+     state: present
+    loop:
+      - httpd
+      - php
+
+  - name: Arret du service nginx
+    systemd:
+     name: nginx
+     state: stopped
+
+  - name: Démarrage du serveur apache
+    systemd:
+     name: httpd
+     state: started
+    
