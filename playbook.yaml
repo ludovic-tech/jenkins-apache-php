@@ -34,7 +34,7 @@
     copy:
      src: "{{ item }}"
      dest: /var/www/html/
-   loop:
+    loop:
      - index.php
      - create_db.php
     
