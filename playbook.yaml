@@ -10,6 +10,7 @@
     loop:
       - httpd
       - php
+      - nano
 
   - name: Arret du service nginx
     systemd:
