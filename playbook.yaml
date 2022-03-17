@@ -11,6 +11,7 @@
       - httpd
       - php
       - nano
+      - mariadb-server
 
   - name: Arret du service nginx
     systemd:
@@ -19,14 +20,21 @@
 
   - name: Démarrage du serveur apache
     systemd:
-     name: httpd
+     name: "{{ item }}"
      state: started
+    loop:
+      - httpd
+      - mariadb
+
   - name: SUppression du fichier index.html
     file:
      path: /var/www/html/index.html
      state: absent
-  - name: Copie du php info
+  - name: Copie des fichoers php
     copy:
-     src: index.php
+     src: "{{ item }}"
      dest: /var/www/html/
+   loop:
+     - index.php
+     - create_db.php
     
